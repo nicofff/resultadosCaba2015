@@ -40,6 +40,9 @@ for icomuna in comunas:
 	if not "votaron" in total:
 		total["votaron"] = comuna["votaron"]
 		total["en padron"] = comuna["en padron"]
+	else:
+		total["votaron"] += comuna["votaron"]
+		total["en padron"] += comuna["en padron"]
 
 
 pp.pprint(total)
