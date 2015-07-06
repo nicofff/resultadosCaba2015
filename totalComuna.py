@@ -16,12 +16,15 @@ for mesa in mesas:
 			lista = listaJefe["lista"] 
 			if not lista in comunas[comuna]["jefe"]:
 				comunas[comuna]["jefe"][lista]= listaJefe["votos"]
-				comunas[comuna]["votaron"] = mesa.get_resumen("VotantesJef")
-				comunas[comuna]["en padron"] = mesa.get_resumen("VotantesMesa")
 			else:
 				comunas[comuna]["jefe"][lista] += listaJefe["votos"]
-				comunas[comuna]["votaron"] += mesa.get_resumen("VotantesJef")
-				comunas[comuna]["en padron"] += mesa.get_resumen("VotantesMesa")
+		
+		if not "votaron" in comunas[comuna]:
+			comunas[comuna]["votaron"] = mesa.get_resumen("VotantesJef")
+			comunas[comuna]["en padron"] = mesa.get_resumen("VotantesMesa")
+		else:
+			comunas[comuna]["votaron"] += mesa.get_resumen("VotantesJef")
+			comunas[comuna]["en padron"] += mesa.get_resumen("VotantesMesa")
 
 
 pp = pprint.PrettyPrinter(indent=4)
