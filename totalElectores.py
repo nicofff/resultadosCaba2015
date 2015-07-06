@@ -53,7 +53,7 @@ for mesa in mesas:
 			print "Diferencia en total comuneros. Mesa "+ mesa.numero
 			error=True
 
-		if (not error):
-			print "Mesa " + mesa.numero + " OK"
+		#if (not error):
+		#	print "Mesa " + mesa.numero + " OK"
 
 	
