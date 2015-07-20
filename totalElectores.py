@@ -10,20 +10,20 @@ for mesa in mesas:
 		totalvotantes = mesa.get_resumen("VotantesMesa")
 		electores = mesa.get_resumen("Electores")
 		votantesJefeGob = mesa.get_resumen("VotantesJef")
-		votantesLegislador = mesa.get_resumen("VotantesLeg")
-		votantesComunero = mesa.get_resumen("VotantesCom")
+		#votantesLegislador = mesa.get_resumen("VotantesLeg")
+		#votantesComunero = mesa.get_resumen("VotantesCom")
 
 		if (totalvotantes != electores):
 			print "Electores != Votantes. Mesa: " + mesa.numero
 			error = True
 
-		if (votantesJefeGob > totalvotantes or votantesLegislador > totalvotantes or votantesComunero > totalvotantes):
+		if (votantesJefeGob > totalvotantes):
 			print "Mas votos que votantes en mesa " + mesa.numero
 			error = True
 
-		if (votantesJefeGob != votantesLegislador or votantesJefeGob != votantesComunero):
-			print "Diferencia de votos entre categorias " + mesa.numero
-			error = True
+		#if (votantesJefeGob != votantesLegislador or votantesJefeGob != votantesComunero):
+		#	print "Diferencia de votos entre categorias " + mesa.numero
+		#	error = True
 
 		### Total Jefe de Gobierno
 		totalJefe = 0
@@ -32,25 +32,6 @@ for mesa in mesas:
 
 		if totalJefe != votantesJefeGob:
 			print "Diferencia en total Jefe de Gobierno. Mesa "+ mesa.numero
-			error=True
-
-
-		### Total Legisladores
-		totalLegislador = 0
-		for listaLegislador in mesa.get_listas("legisladores"):
-			totalLegislador += listaLegislador["votos"]
-
-		if totalLegislador != votantesLegislador:
-			print "Diferencia en total legisladores. Mesa "+ mesa.numero
-			error=True
-
-		### Total Comuneros
-		totalComunero = 0
-		for listaComuneros in mesa.get_listas("comuneros"):
-			totalComunero += listaComuneros["votos"]
-
-		if totalComunero != votantesComunero:
-			print "Diferencia en total comuneros. Mesa "+ mesa.numero
 			error=True
 
 		#if (not error):
